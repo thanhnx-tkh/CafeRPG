@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BotController : BaseCharacter
 {
     [SerializeField]public NavMeshAgent agent;
+    public Chair targetChair;
     private IState<BotController> currentState;
     private void Start()
     {
@@ -13,6 +14,10 @@ public class BotController : BaseCharacter
     }
      private void Update()
     {
+        if(targetChair != null && targetChair.chairZone.IsPlayerSitDown){
+            ChangeState(new MoveTargetState());
+            targetRotationObject = null;
+        }
         RotationToTable();
         if (currentState != null)
         {

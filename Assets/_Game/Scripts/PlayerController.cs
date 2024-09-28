@@ -109,6 +109,8 @@ public class PlayerController : BaseCharacter
 
         chairZone.IsIdle = true;
         chairZone.isChairFound = true;
+
+        chairZone.IsPlayerSitDown = false;
         IsStandUp = false;
     }
 

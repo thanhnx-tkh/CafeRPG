@@ -6,24 +6,26 @@ public class ChairZone : MonoBehaviour
 {
     public bool isChairFound = true;
     public bool IsIdle = true;
+
+    public bool IsPlayerSitDown = false;
     [SerializeField] public Chair chair;
     private float time;
     private float timeCount;
     private void Start() {
-        time = 1f;
+        time = 2f;
         timeCount = 0f;
     }
     private void OnTriggerStay(Collider other)
     {
-
         if (!IsIdle) return;
         if (timeCount > time)
         {
             BaseCharacter character = Cache<BaseCharacter>.GetCollider(other);
             if (character == null) return;
-            if (character as PlayerController && isChairFound)
+            if (character as PlayerController)
             {
-                isChairFound =false;
+                IsPlayerSitDown = true;
+                isChairFound = false;
                 timeCount = 0f;
                 IsIdle = false;
                 // to do : character sit down
@@ -41,12 +43,12 @@ public class ChairZone : MonoBehaviour
                 botController.agent.enabled = false;
                 botController.targetRotationObject = chair.Table.transform;
                 botController.chairZone = this;
+                botController.transform.position = transform.position;
 
                 botController.ChangeState(new SitDownState());
             }
         }
         timeCount += Time.deltaTime;
     }
-    // Player
     
 }

@@ -6,7 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public List<Table> tables;
 
-    public Vector3 GetRandomPointSitting()
+    public Chair GetRandomPointSitting()
 {
     Table table;
     Chair chair;
@@ -28,7 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     } while (!found);
 
-    return chair.chairZone.transform.position;
+    return chair;
 }
 
 }

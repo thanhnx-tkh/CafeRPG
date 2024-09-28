@@ -6,6 +6,7 @@ public class IdleState : IState<BotController>
 {
     public void OnEnter(BotController t)
     {
+        t.targetChair = null;
         t.targetRotationObject = null;
         t.ChangeState(new MoveRandomState());
     }
