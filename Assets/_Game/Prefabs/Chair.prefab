@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 4978177761699035888}
   - component: {fileID: 1146912609523835373}
   - component: {fileID: 7554913317713957893}
-  - component: {fileID: 6002818054939006540}
   m_Layer: 0
   m_Name: chair
   m_TagString: Untagged
@@ -242,27 +241,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6002818054939006540
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5676276913766442338}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5347763, y: 0.36427426, z: 0.31557593}
-  m_Center: {x: 0.00000002781169, y: 0.18209735, z: -0.1166507}
 --- !u!1 &6265088701333813099
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +252,6 @@ GameObject:
   - component: {fileID: 5339777183692298881}
   - component: {fileID: 7599903014520424987}
   - component: {fileID: 434778920989524036}
-  - component: {fileID: 2664811101082318067}
   - component: {fileID: 2889359112736119580}
   m_Layer: 0
   m_Name: Cube
@@ -348,27 +325,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2664811101082318067
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6265088701333813099}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &2889359112736119580
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -434,6 +390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chairZone: {fileID: 2494784894520548557}
   Table: {fileID: 0}
+  objCoffe: {fileID: 0}
 --- !u!1 &7685018526022979083
 GameObject:
   m_ObjectHideFlags: 0
