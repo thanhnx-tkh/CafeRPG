@@ -11,7 +11,6 @@ public class StandUpState : IState<BotController>
         timer = 0;
         moveTime = 2f;
         t.ChangeAnim(Constants.ANIM_STAND_UP);
-        t.transform.position = new Vector3(t.transform.position.x, t.transform.position.y + 0.2f, t.transform.position.z);
 
     }
 
@@ -19,10 +18,10 @@ public class StandUpState : IState<BotController>
     {
         if (timer > moveTime)
         {
-            t.transform.position = new Vector3(t.transform.position.x, t.transform.position.y - 0.2f, t.transform.position.z);
             t.chairZone.IsIdle = true;
             t.chairZone.isChairFound = true;
             t.ChangeState(new IdleState());
+            t.chairZone.chair.objCoffe.SetActive(false);
         }
         timer += Time.deltaTime;
     }

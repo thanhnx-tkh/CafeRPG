@@ -7,4 +7,6 @@ public class Chair : MonoBehaviour
     public ChairZone chairZone;
     public Table Table;
 
+    public GameObject objCoffe;
+
 }

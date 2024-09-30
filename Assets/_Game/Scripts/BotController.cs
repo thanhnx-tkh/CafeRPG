@@ -48,12 +48,25 @@ public class BotController : BaseCharacter
     }
 
     public Vector3 GetRandomPositionBot()
+{
+    Vector3 randomPosition = Vector3.zero;
+    bool validPosition = false;
+    
+    while (!validPosition)
     {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * 10f;
+        Vector3 randomDirection = Random.insideUnitSphere * 10f;
         randomDirection += transform.position;
+        
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, 10f, NavMesh.AllAreas);
-        return hit.position;
+        if (NavMesh.SamplePosition(randomDirection, out hit, 10f, NavMesh.AllAreas))
+        {
+            randomPosition = hit.position;
+            validPosition = true;
+        }
     }
+    
+    return randomPosition;
+}
+
     
 }

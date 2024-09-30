@@ -24,31 +24,9 @@ public class PlayerController : BaseCharacter
     {
         if (IsMoving)
             Moving();
-        // sit_down && stand_up
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            IsMoving = false;
-            ChangeAnim(Constants.ANIM_SIT_DOWN);
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ChangeAnim(Constants.ANIM_STAND_UP);
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
-            StartCoroutine(CoStartIsMoving());
-        }
-    }
-    IEnumerator CoStartIsMoving()
-    {
-        yield return new WaitForSeconds(3f);
-        IsMoving = true;
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
-
     }
     public void Moving()
     {
-        // moveHorizontal = Input.GetAxis("Horizontal");
-        // moveVertical = Input.GetAxis("Vertical");
-
         moveHorizontal = joystick.Horizontal;
         moveVertical = joystick.Vertical;
 
@@ -87,7 +65,6 @@ public class PlayerController : BaseCharacter
 
         yield return new WaitForSeconds(1f);
         // sit down 
-        rb.velocity = Vector3.zero;
         ChangeAnim(Constants.ANIM_SIT_DOWN);
         IsStandUp = true;
     }
@@ -96,14 +73,13 @@ public class PlayerController : BaseCharacter
         if(!IsStandUp) return;
         // stand up 
         ChangeAnim(Constants.ANIM_STAND_UP);
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
         StartCoroutine(CoResetAnim());
         
     }
     IEnumerator CoResetAnim(){
         yield return new WaitForSeconds(2f);
         ChangeAnim(Constants.ANIM_WALK);
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z);
+        chairZone.chair.objCoffe.SetActive(false);
         IsMoving = true;
         targetRotationObject = null;
 

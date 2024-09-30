@@ -14,6 +14,8 @@ public class ChairZone : MonoBehaviour
     private void Start() {
         time = 2f;
         timeCount = 0f;
+
+        chair.objCoffe.SetActive(false);
     }
     private void OnTriggerStay(Collider other)
     {
@@ -24,6 +26,7 @@ public class ChairZone : MonoBehaviour
             if (character == null) return;
             if (character as PlayerController)
             {
+                chair.objCoffe.SetActive(true);
                 IsPlayerSitDown = true;
                 isChairFound = false;
                 timeCount = 0f;
@@ -37,6 +40,7 @@ public class ChairZone : MonoBehaviour
             {
                 timeCount = 0f;
                 IsIdle = false;
+                chair.objCoffe.SetActive(true);
 
                 BotController botController = (BotController)character;
                 
