@@ -17,18 +17,24 @@ public class PlayerController : BaseCharacter
         ChangeAnim(Constants.ANIM_IDLE);
         IsMoving = true;
     }
-    private void Update() {
+    private void Update()
+    {
         RotationToTable();
     }
     private void FixedUpdate()
     {
+        moveHorizontal = joystick.Horizontal;
+        moveVertical = joystick.Vertical;
+        if (Mathf.Abs(moveHorizontal) > 0.01f || Mathf.Abs(moveVertical) > 0.1f)
+        {
+            ButtonStandUp();
+        }
         if (IsMoving)
             Moving();
     }
     public void Moving()
     {
-        moveHorizontal = joystick.Horizontal;
-        moveVertical = joystick.Vertical;
+
 
         if (Mathf.Abs(moveHorizontal) > 0.01f || Mathf.Abs(moveVertical) > 0.1f)
         {
@@ -69,14 +75,16 @@ public class PlayerController : BaseCharacter
         IsStandUp = true;
     }
 
-    public void ButtonStandUp(){
-        if(!IsStandUp) return;
+    public void ButtonStandUp()
+    {
+        if (!IsStandUp) return;
         // stand up 
         ChangeAnim(Constants.ANIM_STAND_UP);
         StartCoroutine(CoResetAnim());
-        
+
     }
-    IEnumerator CoResetAnim(){
+    IEnumerator CoResetAnim()
+    {
         yield return new WaitForSeconds(2f);
         ChangeAnim(Constants.ANIM_WALK);
         chairZone.chair.objCoffe.SetActive(false);

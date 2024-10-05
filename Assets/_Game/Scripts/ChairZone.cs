@@ -12,7 +12,7 @@ public class ChairZone : MonoBehaviour
     private float time;
     private float timeCount;
     private void Start() {
-        time = 2f;
+        time = 1f;
         timeCount = 0f;
 
         chair.objCoffe.SetActive(false);

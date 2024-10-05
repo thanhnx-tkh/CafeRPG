@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public List<Table> tables;
+    public List<BotController> botControllers;
 
     public Chair GetRandomPointSitting()
 {
     Table table;
     Chair chair;
     bool found = false;
-
     do
     {
         int indexTable = Random.Range(0, tables.Count);

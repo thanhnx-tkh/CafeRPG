@@ -9,6 +9,13 @@ public class MoveTargetState : IState<BotController>
     public void OnEnter(BotController t)
     {
         Chair chairTarget =  GameManager.Ins.GetRandomPointSitting();
+        List<BotController> botControllers = GameManager.Ins.botControllers;
+        for (int i = 0; i < botControllers.Count; i++)
+        {
+            if(botControllers[i].targetChair == chairTarget){
+                t.ChangeState(new MoveTargetState());
+            }
+        }
         destination = chairTarget.chairZone.transform.position;
         t.targetChair = chairTarget;
         t.SetDestination(destination);
